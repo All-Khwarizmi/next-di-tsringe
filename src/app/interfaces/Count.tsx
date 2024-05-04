@@ -36,7 +36,12 @@ export default function Count() {
       <div>
         Create User
         {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-        <button onClick={() => setUser({ count: 0, name: "Jon" })}>+</button>
+        <button
+          className="btn"
+          onClick={() => setUser({ count: 0, name: "Jon" })}
+        >
+          +
+        </button>
       </div>
       {userLocalId && (
         <div>
