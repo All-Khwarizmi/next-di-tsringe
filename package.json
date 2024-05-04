@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@editorjs/editorjs": "2.29.1",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
