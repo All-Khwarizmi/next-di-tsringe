@@ -1,10 +1,9 @@
-import { databaseLocalStorage } from "@/data/db";
-import { useCurrentEditor, EditorContent, Editor } from "@tiptap/react";
+import { useCurrentEditor } from "@tiptap/react";
 import { useContext, useEffect, useState } from "react";
 import ClasseComponent from "./Classe";
 import { useRouter } from "next/navigation";
 import Provider from "./provider";
-import { ClasseContext } from "./page";
+import { ClasseContext, databaseLocalStorage } from "./classe-ctx";
 
 export function Child() {
   const { classe } = useContext(ClasseContext);

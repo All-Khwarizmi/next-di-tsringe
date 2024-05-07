@@ -1,25 +1,15 @@
 "use client";
-
+import "reflect-metadata";
 import { Child } from "./Child";
-import {
-  type SetStateAction,
-  createContext,
-  useState,
-  type Dispatch,
-} from "react";
-import { type Classe, databaseLocalStorage } from "@/data/db";
+import { useState } from "react";
+import type { Classe } from "@/data/db";
+import { ClasseContext, databaseLocalStorage } from "./classe-ctx";
 
 const classe = databaseLocalStorage.getClassePrefered();
 console.log("prefered classe", classe?.name);
-const classeContextOptions: {
-  classe: Classe;
-  setClasse: Dispatch<SetStateAction<Classe>>;
-} = {
-  classe: classe || databaseLocalStorage.getDefaultClasse(),
-  setClasse: () => {},
-};
-
-export const ClasseContext = createContext(classeContextOptions);
+if (typeof window === "undefined") {
+  console.log("window is undefined in Home");
+}
 
 export default function Home() {
   const [classe, setClasse] = useState<Classe>(

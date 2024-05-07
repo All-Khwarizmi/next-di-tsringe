@@ -1,4 +1,7 @@
 "use client";
+
+import { inject, injectable } from "tsyringe";
+
 export interface Classe {
   name: string;
   id: string;
@@ -13,11 +16,18 @@ export interface DatabaseOptions {
   preferedClasse: string;
   classes: Classe[];
 }
-
+@injectable()
 export class DatabaseLocalStorage {
   private _classes: DatabaseOptions;
-  constructor() {
-    const classes = localStorage.getItem("classes");
+  private _storage: Storage;
+  constructor(@inject("storage") storage: Storage) {
+    if (!storage) throw new Error("Storage not provided");
+    this._storage = storage;
+
+    if (typeof window === "undefined") {
+      console.log("window is undefined in DatabaseLocalStorage");
+    }
+    const classes = this._storage.getItem("classes");
     if (classes) {
       this._classes = JSON.parse(classes);
     } else {
@@ -57,7 +67,7 @@ export class DatabaseLocalStorage {
 
   saveClasse({ classe }: { classe: Classe }) {
     this._classes.classes.push(classe);
-    localStorage.setItem("classes", JSON.stringify(this._classes));
+    this._storage.setItem("classes", JSON.stringify(this._classes));
   }
   updateClasse({ classe, classeId }: { classe: Classe; classeId: string }) {
     const classeIndex = this._classes.classes.findIndex((classe) => {
@@ -71,12 +81,12 @@ export class DatabaseLocalStorage {
       console.error("Classe not found");
     }
     this._classes.classes[classeIndex] = classe;
-    localStorage.setItem("classes", JSON.stringify(this._classes));
+    this._storage.setItem("classes", JSON.stringify(this._classes));
   }
 
   setPreferedClasse({ name }: { name: string }) {
     this._classes.preferedClasse = name;
-    localStorage.setItem("classes", JSON.stringify(this._classes));
+    this._storage.setItem("classes", JSON.stringify(this._classes));
   }
 
   getClassePrefered() {
@@ -93,5 +103,3 @@ export class DatabaseLocalStorage {
     return this._classes.classes[0];
   }
 }
-
-export const databaseLocalStorage = new DatabaseLocalStorage();
