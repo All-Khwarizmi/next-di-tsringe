@@ -1,5 +1,4 @@
-import type { JSONContent } from "@tiptap/react";
-
+"use client";
 export interface Classe {
   name: string;
   id: string;
