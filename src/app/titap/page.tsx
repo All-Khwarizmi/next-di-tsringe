@@ -28,7 +28,7 @@ export default function Home() {
   );
   console.log({ classeName: classe.name });
   return (
-    <div className=" h-screen w-screen flex justify-center items-center">
+    <div className=" h-screen w-screen flex flex-col justify-center items-center px-4">
       <ClasseContext.Provider value={{ classe, setClasse }}>
         <Child />
       </ClasseContext.Provider>

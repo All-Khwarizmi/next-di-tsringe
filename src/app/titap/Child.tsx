@@ -10,7 +10,7 @@ export function Child() {
   const { classe } = useContext(ClasseContext);
   const classes = databaseLocalStorage.getAllClasses();
   return (
-    <div className="flex py-12 gap-6 h-screen w-screen">
+    <div className="grid grid-cols-2 py-12 gap-6 h-screen w-screen mx-4">
       <div className="flex flex-col ">
         <h1>Classes</h1>
 
@@ -42,7 +42,7 @@ export function EditorComponent() {
   }, [classe]);
   return (
     <div>
-      <form>
+      <form className="flex flex-col">
         <label htmlFor="name">Classe Name</label>
         <input
           value={name}

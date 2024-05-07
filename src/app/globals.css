@@ -4,16 +4,23 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb:53, 55, 75;
+  --background-end-rgb: 30, 30, 46;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb:  255, 255, 255;
+    --background-start-rgb: 53, 55, 75;
+    --background-end-rgb: 30, 30, 46;
   }
+}
+
+
+html, 
+body {
+  font-family: 'Inter', sans-serif;
+  ;
 }
 
 body {
@@ -24,10 +31,28 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    max-width: 100%;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+button {
+  @apply bg-gray-700 text-white font-bold py-2 px-4 rounded m-1;
+}
+
+textarea {
+  @apply bg-gray-300 text-gray-800 p-2 rounded;
+}
+
+
+.tiptap {
+  @apply bg-gray-100 text-gray-800 p-2 rounded;
+}
+
+.proseMirror {
+  @apply bg-gray-100 text-gray-800 p-2 rounded;
 }
