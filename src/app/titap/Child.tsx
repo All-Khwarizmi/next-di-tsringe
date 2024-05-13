@@ -36,7 +36,6 @@ export function EditorComponent() {
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    console.log("classe changed", classe);
     editor?.commands.setContent(classe?.lessons?.content || "");
   }, [classe]);
   return (

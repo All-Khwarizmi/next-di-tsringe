@@ -21,12 +21,8 @@ export class DatabaseLocalStorage {
   private _classes: DatabaseOptions;
   private _storage: Storage;
   constructor(@inject("storage") storage: Storage) {
-    if (!storage) throw new Error("Storage not provided");
     this._storage = storage;
 
-    if (typeof window === "undefined") {
-      console.log("window is undefined in DatabaseLocalStorage");
-    }
     const classes = this._storage.getItem("classes");
     if (classes) {
       this._classes = JSON.parse(classes);
@@ -95,7 +91,6 @@ export class DatabaseLocalStorage {
       console.log(classe.name, preferedClasseName);
       return classe.name === preferedClasseName;
     });
-    console.log("prefered classe", classe);
     return classe;
   }
 

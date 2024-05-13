@@ -19,7 +19,7 @@ if (typeof window !== "undefined") {
 }
 
 container.register("storage", {
-  useValue: storage,
+  useValue: window.localStorage,
 });
 export const databaseLocalStorage = container.resolve(DatabaseLocalStorage);
 

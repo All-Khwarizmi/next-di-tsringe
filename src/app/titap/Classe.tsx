@@ -9,17 +9,15 @@ export default function ClasseComponent({ classe }: { classe: Classe }) {
 
   const router = useRouter();
   return (
-    <>
-      <button
-        type="button"
-        onClick={() => {
-          setClasse(classe);
-          databaseLocalStorage.setPreferedClasse({ name: classe.name });
-          router.refresh();
-        }}
-      >
-        {classe.name}
-      </button>
-    </>
+    <button
+      type="button"
+      onClick={() => {
+        setClasse(classe);
+        databaseLocalStorage.setPreferedClasse({ name: classe.name });
+        router.refresh();
+      }}
+    >
+      {classe.name}
+    </button>
   );
 }
